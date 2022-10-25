@@ -4,6 +4,7 @@
 
 from operator import is_
 import random
+from re import U
 
 favorite_number = 24
 
@@ -180,3 +181,37 @@ check_consecutive("aaabbbbbccccaacccbbbaaabbbaaa")
 
 
 #----------------------------------- pt 3------------------------------------------
+
+
+#Task 1: happy numbers = positive integer, replace by the sum of the square of its digits, until the number equals 1. Ex: 19
+    #steps
+        # num = user input for positive integer
+        # break into digits
+        # while num != 1
+            # square the digits (digit to the digit, not digit to the other digit)
+            # num += (square of the digits)
+            # if == 1 => happy
+            # if == ????
+
+def happy_number():
+    num = input("Please provide a positive integer")
+    string_num = str(num)
+    number_by_digit = list(string_num)
+    # for digit in [range(len(number_by_digit)-1, 0, -1)]:
+    squared_digits = 0
+    # int_digit = 0
+    digit = "0"    
+    while squared_digits != 1:
+        index = 0
+        list_digit = [None]*(len(number_by_digit))
+        for list_digit[index] in number_by_digit:
+            squared_digits = 0
+            squared_int = (int(list_digit[index])*int(list_digit[index]))
+            squared_digits += squared_int
+            # squared_int = int(digit)*int(digit)
+            # squared_digits += squared_int
+            index += 1
+        number_by_digit = str(squared_digits)   
+    print(f"{num} is a happy number!")
+
+happy_number()
