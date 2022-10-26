@@ -2,9 +2,12 @@
 # Task 2: use the random module to generate a rand number etween a range that includes favorite_number
     #Determine how many numbers away the random number was from your fav number.
 
+from cgi import print_environ_usage
+from multiprocessing.resource_sharer import stop
 from operator import is_
 import random
 from re import U
+from tkinter import E, N
 
 favorite_number = 24
 
@@ -87,6 +90,9 @@ def capitalization(str_phrase):
     print(output)
 
 capitalization("hello world")
+
+
+
 
 
 
@@ -197,21 +203,172 @@ def happy_number():
     num = input("Please provide a positive integer")
     string_num = str(num)
     number_by_digit = list(string_num)
-    # for digit in [range(len(number_by_digit)-1, 0, -1)]:
     squared_digits = 0
-    # int_digit = 0
-    digit = "0"    
-    while squared_digits != 1:
-        index = 0
-        list_digit = [None]*(len(number_by_digit))
-        for list_digit[index] in number_by_digit:
-            squared_digits = 0
-            squared_int = (int(list_digit[index])*int(list_digit[index]))
-            squared_digits += squared_int
-            # squared_int = int(digit)*int(digit)
-            # squared_digits += squared_int
-            index += 1
-        number_by_digit = str(squared_digits)   
-    print(f"{num} is a happy number!")
+    tries = 0
+    stop = 100000
+    while tries < stop:
+        if squared_digits == 1:
+            print(f"{num} is a happy number!")
+            exit()
+        else:
+            index = 0
+            list_digit = [None]*(len(number_by_digit))
+            for list_digit[index] in number_by_digit:
+                squared_digits = 0
+                squared_int = (int(list_digit[index])*int(list_digit[index]))
+                squared_digits += squared_int
+                index += 1
+            tries += 1  
+            number_by_digit = str(squared_digits) 
+        if tries == stop:
+                print(f"After {stop} checks, {num} does not appear to be a happy number")
+                exit()
 
-happy_number()
+# happy_number()
+
+
+
+
+#Task 2: Prime Numbers: write a method that prints out all prime numbers between 1 and 100
+    # > 1
+    # int
+    # not the product of two smaller ints (divisible only by 1 and itself)
+        #
+    # print all applicable
+
+
+def prime_evaluator():
+    num_is_prime = False
+    limit = 100
+    num = 2
+    nums = []
+    num_match = 0
+    x = 1
+    modulus = 2
+
+    while num < limit:
+        if num == 2 :
+            nums.append(num)
+            num+=1
+                
+        while (x < num< limit):
+        
+            while (num-x != 1) and (modulus < num):
+                result = num%(modulus)
+                x += 1
+                if result == 0:
+                    num_match += 1
+                modulus+= 1
+
+            if num_match == 0:
+                num_is_prime == True
+                nums.append(num)
+                num_is_prime == False
+                num_match = 0
+                num += 1
+                x = 1 
+                modulus = 2
+            
+            else:
+                x = 1 
+                num += 1
+                modulus = 2
+                num_match = 0
+        else:
+            x = 1 
+            num += 1
+            modulus = 2
+            num_match = 0
+
+            
+
+    print(nums)
+
+prime_evaluator()
+
+
+
+
+#Task 3: Fibonacci: write a method that does the fibonacci sequence starting at a user_input
+    # steps
+        # get input
+        # while < steps
+            # num 2 = num 1 + num
+
+def fibonacci():
+    num_2 = 1
+    num_1 = 1
+    num = 0
+    nums= []
+
+
+    nums.append(num)
+
+    steps = 0
+    while steps < 15:
+        num_2 = num_1 + num
+        nums.append(num_2)
+
+        num_1 = num + num_2
+        nums.append(num_1)
+
+        num = num_2 + num_1
+        nums.append(num)
+     
+        
+        steps += 1
+    print(nums)
+    return(nums)
+
+fibonacci()
+
+
+
+
+
+#  4 + 4 = 8
+def fibonacci_on_demand():
+   
+    num = input("Please enter an integer.")
+    num = int(num)
+    num_1 = num + 1
+    num2 = num + num_1
+    nums= []
+ 
+    if num == 0:
+        fibonacci()
+        
+    else: 
+        nums.append(num)
+
+        steps = 0
+        while steps < 15:
+            if steps == 0:
+                num_2 = 1 + num
+                nums.append(num_2)
+
+                num_1 = num + num_2
+                nums.append(num_1)
+
+                num = num_2 + num_1
+                nums.append(num)
+                steps += 1
+            
+            else:
+                num_2 = num_1 + num
+                nums.append(num_2)
+
+                num_1 = num + num_2
+                nums.append(num_1)
+
+                num = num_2 + num_1
+                nums.append(num)
+                
+                steps += 1
+        print(nums)
+        return(nums)
+
+
+fibonacci_on_demand()
+
+
