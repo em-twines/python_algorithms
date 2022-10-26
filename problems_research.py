@@ -94,8 +94,6 @@ capitalization("hello world")
 
 
 
-
-
 # Task 3: Palindrome
     # Write code that takes user input and checks to see if it's a palindrome as well as reports the results. 
     # steps
@@ -224,7 +222,7 @@ def happy_number():
                 print(f"After {stop} checks, {num} does not appear to be a happy number")
                 exit()
 
-# happy_number()
+happy_number()
 
 
 
@@ -326,7 +324,6 @@ fibonacci()
 
 
 
-#  4 + 4 = 8
 def fibonacci_on_demand():
    
     num = input("Please enter an integer.")
